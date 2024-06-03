@@ -73,8 +73,8 @@ en:
       created: "New article has been added!"
       updated: "The article has been updated!"
       removed: "The article has been removed!"
-    errors:
-      skill_in_used: 
+    notices:
+      not_found: "Article did not found!"
   activerecord:
     errors:
       models:

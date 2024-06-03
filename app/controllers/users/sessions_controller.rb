@@ -32,8 +32,8 @@ module Users
     def sign_up
       self.resource = User.create!(sign_up_params)
 
-      api_response.info.message = I18n.t('users.successes.created')
-      send_serialized_response!(current_user ? serialize(resource, current_user:) : nil)
+      api_response.serialized_data = serialize(resource, only_include: ['articles'])
+      send_success_response(I18n.t('users.successes.created'))
     end
 
     # -----------------------------------------------------------------------------------------------------------

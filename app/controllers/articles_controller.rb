@@ -99,7 +99,8 @@ class ArticlesController < AuthController
   private
 
   def set_own_article
-    self.article ||= current_user.articles.find(params[:id])
+    self.article ||= current_user.articles.find_by(id: params[:id])
+    raise_record_not_found(I18n.t('users.notices.not_permitted')) unless article
   end
 
   def article_params
