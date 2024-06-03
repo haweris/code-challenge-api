@@ -2,6 +2,12 @@
 
 require 'active_support/core_ext/integer/time'
 
+['controllers.concerns', 'models.concerns'].each do |folder_name|
+  Dir[Rails.root.join('app', *folder_name.split('.'), '*.rb')].each do |file|
+    load file
+  end
+end
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -10,8 +16,8 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.enable_reloading = true
 
-  # Do not eager load code on boot.
-  config.eager_load = false
+  # Do eager load code on boot.
+  config.eager_load = true
 
   # Show full error reports.
   config.consider_all_requests_local = true
@@ -70,5 +76,18 @@ Rails.application.configure do
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'http://localhost', port: 3000 }
+
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_caching = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    enable_starttls_auto: true,
+    address: 'mtp.gmail.com',
+    port: 587,
+    domain: 'gmail.com',
+    user_name: 'haweris.warraich@gmail.com',
+    password: 'bqznymotepslqmrm',
+    authentication: 'plain'
+  }
 end

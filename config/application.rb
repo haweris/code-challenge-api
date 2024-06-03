@@ -19,6 +19,12 @@ module CodeChallengeApi
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
+    # In App Autoload folders
+    ['middlewares', 'services', 'controllers.concerns', 'models.concerns'].each do |folder_name|
+      config.autoload_paths << Rails.root.join('app', *folder_name.split('.'))
+      config.eager_load_paths << Rails.root.join('app', *folder_name.split('.'))
+    end
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
@@ -31,5 +37,10 @@ module CodeChallengeApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # requiring diagnostics middleware
+    load config.root.join('app', 'middlewares', 'diagnostics.rb')
+    config.middleware.use ::Diagnostics
+    config.middleware.insert_before ::ActionDispatch::Executor, ::Diagnostics
   end
 end

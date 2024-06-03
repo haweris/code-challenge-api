@@ -2,30 +2,89 @@
 # are automatically loaded by Rails. If you want to use locales other than
 # English, add the necessary files in this directory.
 #
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  general:
+    notices:
+      congrats: Congratulations!
+      change_happened: "%{key}: %{last_value} -> %{new_value}"
+    errors:
+      unprocessable_entity: "unprocessable_entity"
+      something_went_wrong: "Something went wrong while processing your request."
+      server_error: "internal_server_error"
+      routing_error: "Requested route not found!"
+      subdomain_not_found: "Requested subdomain not found!"
+      action_not_found: "Requested action not found!"
+      record_not_found: "Requested record not found!"
+      not_found_class_key_value: "No %{class_name} found against %{key}: '%{value}'."
+      invalid_request: "Invalid Request!"
+      encryption_error: "Encryption error!"
+      decryption_error: "Decryption error!"
+      invalid_params: "Invalid parameters!"
+      invalid_param_keys: "Invalid parameters: %{invalid_keys}"
+      invalid_or_expired_link: "Invitation link is not valid! Please contact admin for new invitation link."
+      missing_params: "Parameters missing!"
+      missing_or_invlaid_params: "Invalid or missing parameters: %{parameters}"
+      unauthorized_action: "You are not authorized to perform this action!"
+      invalid_detail: "Invalid %{field_name}!"
+      user_not_found: "User not found."
+      notifier_request_timeout: "Request timed out, seems like an issue with notification service."
+      first_advatage_timeout: "Request timed out, seems like an issue with First Advanatge service."
+      invalid_phone_number: "Invalid phone number provided to send notification!"
+      message_too_large: "Message exceeds the limit, max is 1600 characters."
+      must_be_array: "%{item} must be an array!"
+  sessions:
+    info:
+      otp_sent: "An OTP has been sent to your email and phone number."
+      otp_already_sent: "An OTP has already been sent. Please wait at least 30 seconds before retry."
+      reset_password_link_sent: "A reset password link has been sent to your email."
+      reset_password_link_already_sent: "A reset password link has already been sent. Please wait at least 30 seconds before retry."
+    successes:
+      accepted_invitation: "Your profile has been setup! Please login to continue."
+      signed_in: "You are successfully signed in."
+      signed_out: "You are logged out."
+      reset_password: "Password has been reset! Please login again with new password."
+    errors:
+      already_authenticated: "You are already signed in."
+      timeout: "Your session expired. Please sign in again to continue."
+      unauthenticated: "You need to sign in before continuing."
+      invalid_credentials: "Invalid credentials!"
+      invalid_otp: "Invalid OTP provided!"
+      sign_out_failure: "You were not sined in."
+      user_not_found: "User not found! Please provide a valid email address."
+      user_not_persisted: "Account not persisted in database yet!"
+      inactive_user: "Account has been deactivated. Please contact admin for your account activation."
+      password_mismatch: "Passwords did not match!"
+  users:
+    successes:
+      invited: "Invitation has been sent successfully!"
+      reinvited: "User has been reinvited successfully! He will receive email shortly."
+      created: "User has been created successfully!"
+      updated: "Record has been updated successfully!"
+      destroyed: "User has been deleted successfully!"
+    notices:
+      not_permitted: "You are not allowed to perform this action."
+    errors:
+      not_found: "User not found against given id"
+      is_otp_user: "You don't need to reset password. Please login via OTP!"
+      not_invited: "Invite not sent, seems like an issue with communication service."
+  articles:
+    successes:
+      created: "New article has been added!"
+      updated: "The article has been updated!"
+      removed: "The article has been removed!"
+    errors:
+      skill_in_used: 
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              blank: "can't be blank"
+              uppercase: "must contain at least 1 uppercase"
+              lowercase: "must contain at least 1 lowercase"
+              digit: "must contain at least one number"
+              special_character: 'must contain special character e.g. !@#.",''$%^&+='
+              invalid: 'should be alphanumeric, must contain at least 1 uppercase letter, 1 lowercase letter, a number and a special character e.g.''!@#.",''$%^&+='
+              is_old: "recently used! Please choose a different password"

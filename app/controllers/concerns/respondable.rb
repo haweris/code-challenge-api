@@ -99,7 +99,7 @@ module Respondable
 
   def initialize_api_response
     @api_response = ApiResponse.new(ResponseInfo.new(nil, 200), {}, {}, {}, {})
-    @json_to_render = ::OpenStruct.new(response: {})
+    @json_to_render = ::OpenStruct.new(response_info: {})
   end
 
   def modified_message(msg = nil)
@@ -129,7 +129,7 @@ module Respondable
   end
 
   def set_json_response
-    json_to_render.response = api_response.info.to_h.compact
+    json_to_render.response_info = api_response.info.to_h.compact
   end
 
   def set_json_data_root_key

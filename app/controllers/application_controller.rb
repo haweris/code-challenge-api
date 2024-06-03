@@ -18,10 +18,5 @@ class ApplicationController < ActionController::API
     end
   end
 
-  def process(action, *args)
-    params.parse_for_form_data!
-    super
-  end
-
   helper(*helper_method)
 end

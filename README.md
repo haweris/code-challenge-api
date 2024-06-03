@@ -18,6 +18,15 @@ This is a Ruby on Rails API-only application for managing educational articles. 
     # SHELL command
     rails server
 
+
+## API Endpoints
+
+- `GET /articles` - List all articles
+- `GET /articles/:id` - Get a specific article
+- `POST /articles` - Create a new article
+- `PATCH/PUT /articles/:id` - Update an existing article
+- `DELETE /articles/:id` - Delete an article
+
 ## Testing
 
 Run tests using:

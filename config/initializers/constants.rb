@@ -45,8 +45,19 @@ UNPROCESSABLE_ENTITY_EXCEPTIONS = ['ActionController::InvalidAuthenticityToken',
                                    'ActiveRecord::RecordNotSaved'].freeze
 NOT_IMPLEMENTED_EXCEPTIONS = ['ActionController::NotImplemented'].freeze
 
+# -------------------------- ENUMS ---------------------------
+PROFILE_GENDERS_ENUM = {
+  male: 'male',
+  female: 'female',
+  other: 'other',
+  unspecified: 'unspecified'
+}.freeze
+
 # ----------------------SIMPLE CONSTANTS ---------------------
-DISPATCH_REQUESTS = [['POST', %r{/validate_link$}, { scope: :user }]].freeze
+DISPATCH_REQUESTS = [
+  ['POST', %r{/validate_link$}, { scope: :user }],
+  ['POST', %r{/sign_in$}, { scope: :user }]
+].freeze
 REVOCATION_REQUESTS = [['DELETE', %r{/sign_out$}, { scope: :user }]].freeze
 
 # -------------------------- REGEX ---------------------------

@@ -9,7 +9,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins ALLOWED_ORIGINS_REGEX
+    origins '*'
 
     resource '*',
              headers: :any,
